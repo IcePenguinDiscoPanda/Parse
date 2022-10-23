@@ -1,7 +1,25 @@
+const KEY_WORDS = [
+    ['малый бизнес', 'малого бизнеса', 'малому бизнесу', 'малом бизнесе'],
+    ['средний бизнес', 'среднего бизнеса', 'среднему бизнесу', 'среднем бизнесе'],
+    ['малый и средний бизнес', 'малого и среднего бизнеса', 'малому и среднему бизнесу', 'малом и среднем бизнесе'],
+    ['мсб'],
+    ['рко'],
+    ['мсп'],
+    ['мсб'],
+    ['расчетно-кассовое', 'расчетно-кассового', 'расчетно-кассовому', 'расчетно-кассовом'],
+    ['пассивы', 'пассивов', 'пассивам', 'пассивами'],
+    ['кредитование', 'кредитования', 'кредитованию', 'кредитованием','кредитовании']
+  ];
+  
+const KEY_WORDS_FLAT = KEY_WORDS.reduce((acc, item) => {
+    if (Array.isArray(item)) {
+        return [...acc, ...item];
+    }
+    return [...acc, item];
+},[])
+
 function getFilteredResult (sourceArray) {
-    const KEY_WORDS = [ "Бали", "Softline", "США", "Кабмин", "NFT", "малый средний бизнес", "мсб", "кредитование юрлиц", "рко",
-     "расчетно-кассовое обслуживание", "пассивы", "мсп", "кредитование мсп", "новые продукты мсб мсп", "ПСБ", "Сбер"];
-    const preparedKeyWords = KEY_WORDS.map(word => word.toLowerCase());
+    const preparedKeyWords = KEY_WORDS_FLAT.map(word => word.toLowerCase());
     return sourceArray.map(site => {
         const filteredListOfNews = site.listOfNews.filter(news => {
             return preparedKeyWords.reduce((acc, keyWord) => {
@@ -19,3 +37,7 @@ function getFilteredResult (sourceArray) {
 }
 
 module.exports = { getFilteredResult };
+
+
+
+
