@@ -29,7 +29,7 @@ function convertAndSaveResult (newsArray = []) {
 
     const date = format(new Date(), "dd-MM-yyyy");
     Packer.toBuffer(doc).then((buffer) => {
-        fs.writeFileSync(`Отчет за ${date}.docx`, buffer);
+        fs.writeFileSync(`reports/Отчет за ${date}.docx`, buffer);
         console.log("done");
     });
 }
