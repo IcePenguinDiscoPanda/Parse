@@ -1,6 +1,6 @@
 function getFilteredResult (sourceArray) {
-    const KEY_WORDS = ["малый средний бизнес", "мсб", "кредитование юрлиц", "рко", "расчетно-кассовое обслуживание", "пассивы",
-     "мсп", "кредитование мсп", "новые продукты мсб мсп", "ПСБ", "Сбер", "ЕС"];
+    const KEY_WORDS = [ "Бали", "Softline", "США", "Кабмин", "NFT", "малый средний бизнес", "мсб", "кредитование юрлиц", "рко",
+     "расчетно-кассовое обслуживание", "пассивы", "мсп", "кредитование мсп", "новые продукты мсб мсп", "ПСБ", "Сбер"];
     const preparedKeyWords = KEY_WORDS.map(word => word.toLowerCase());
     return sourceArray.map(site => {
         const filteredListOfNews = site.listOfNews.filter(news => {

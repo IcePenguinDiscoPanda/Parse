@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 const subDays = require('date-fns/subDays');
 const format = require('date-fns/format');
 
-async function getParsedData()  {
+async function getParsedDataFromLenta()  {
 
     const previousDay = subDays(new Date(), 1);
     const formattedPreviousDay = format(previousDay, "dd/MM/yyyy");
@@ -39,10 +39,10 @@ async function getParsedData()  {
     await browser.close();
 
     return {
-        siteName: "Банки.ру",
-        siteHref: "https://www.banki.ru/",
+        siteName: "Лента.ру",
+        siteHref: "https://www.lenta.ru/",
         listOfNews,
     };
 }
 
-module.exports = { getParsedData };
+module.exports = { getParsedDataFromLenta };
