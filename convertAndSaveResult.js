@@ -28,8 +28,14 @@ function convertAndSaveResult (newsArray = []) {
     });
 
     const date = format(new Date(), "dd-MM-yyyy");
+    const dir = './reports';
+
     Packer.toBuffer(doc).then((buffer) => {
-        fs.writeFileSync(`reports/Отчет за ${date}.docx`, buffer);
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+
+        fs.writeFileSync(`${dir}/Отчет за ${date}.docx`, buffer);
         console.log("done");
     });
 }

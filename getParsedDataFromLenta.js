@@ -2,8 +2,7 @@ const puppeteer = require("puppeteer");
 const subDays = require('date-fns/subDays');
 const format = require('date-fns/format');
 
-async function getParsedDataFromLenta()  {
-
+async function getParsedDataFromLenta() {
     const previousDay = subDays(new Date(), 1);
     const formattedPreviousDay = format(previousDay, "dd/MM/yyyy");
     const year = format(previousDay, "yyyy");
@@ -14,27 +13,20 @@ async function getParsedDataFromLenta()  {
 
     const siteHref = `https://lenta.ru/rubrics/economics/${year}/${month}/${day}/`; 
 
-    
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
     const selectorName = '.card-full-news';
     await page.waitForSelector(selectorName);
 
-    const elements = await page.$$(selectorName);
+    const listOfNews = await page.evaluate(({ selectorName, formattedPreviousDay }) => {
+        const elements = Array.from(document.querySelectorAll(selectorName));
 
-    const listOfNews = [];
-
-    elements.forEach( async element => {
-        const href = await page.evaluate(el => el.href, element);
-        const name = await page.evaluate(el => el.firstChild.textContent, element);
-        listOfNews.push({
-            href,
-            name,
+        return elements.map(element => ({
+            href: element.href,
+            name: element.firstChild.textContent,
             date: formattedPreviousDay,
-        })
-    });
-
-    
+        }));
+    }, { selectorName, formattedPreviousDay });
 
     await browser.close();
 
