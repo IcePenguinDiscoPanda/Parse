@@ -11,7 +11,6 @@ const { getFilteredResult } = filteredResultHelper;
 const { convertAndSaveResult } = convertAndSaveResultHelper;
 
 (async () => {
-    
     const parseResultLentaRu = await getParsedDataFromLenta();
     const parseResultBankiRu = await getParsedDataFromBanki();
     const parseResultPSB = await getParsedDataFromPSB();
