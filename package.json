@@ -12,6 +12,7 @@
     "date-fns": "^2.29.2",
     "docx": "^7.4.1",
     "fs": "^0.0.1-security",
+    "lodash": "^4.17.21",
     "puppeteer": "^16.1.1"
   }
 }

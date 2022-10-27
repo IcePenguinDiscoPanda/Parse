@@ -11,12 +11,16 @@ async function getParsedDataFromBanki()  {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
+    await page.setViewport({ width: 1366, height: 768});
+
     const siteHref = `https://www.banki.ru/news/lenta/main/?filterType=all&d=${day}&m=${month}&y=${year}`; 
 
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
     const selectorName = '.NewsItemstyled__StyledItemTitle-sc-jjc7yr-7';
     await page.waitForSelector(selectorName);
+
+    await page.screenshot({path: 'example.png', fullPage: true});
 
     const listOfNews = await page.evaluate(({ selectorName, formattedPreviousDay }) => {
         const elements = Array.from(document.querySelectorAll(selectorName));
@@ -27,6 +31,8 @@ async function getParsedDataFromBanki()  {
             date: formattedPreviousDay,
         }));
     }, { selectorName, formattedPreviousDay });
+
+    console.log(listOfNews);
 
     await browser.close();
 

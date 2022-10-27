@@ -1,12 +1,20 @@
-const puppeteer = require("puppeteer");
+const puppeteer = require('puppeteer');
 const subDays = require('date-fns/subDays');
 const format = require('date-fns/format');
-// const parse = require('date-fns/parse');
+const _ = require('lodash');
+const parse = require('date-fns/parse');
+const locale = require('date-fns/locale');
 
 const DATE_MASK = 'dd/MM/yyyy';
 
-async function getParsedDataFromRankings()  {
+const getPreparedDate = date => {
+    const trimmedDate = _.trim(date).split(' ').join('').replace('\n', ' ');
+    const parsedDate = parse(trimmedDate, 'd MMM', new Date(), { locale: locale.ru });
+    const formattedDate = format(parsedDate, DATE_MASK);
+    return formattedDate;
+};
 
+async function getParsedDataFromRankings() {
     const previousDay = subDays(new Date(), 1);
     const formattedPreviousDay = format(previousDay, DATE_MASK);
     const browser = await puppeteer.launch();
@@ -20,25 +28,30 @@ async function getParsedDataFromRankings()  {
     const selectorName = '.news-preview__item';
     await page.waitForSelector(selectorName);
 
-    const elements = await page.$$(selectorName);
+    const listOfNewsRaw = await page.evaluate(({ selectorName }) => {
+        const elements = Array.from(document.querySelectorAll(selectorName));
 
-    const listOfNews = [];
+        return elements.map(element => {
+            const name = element.querySelector('.news-preview__title').textContent;
+            const href = element.querySelector('.news-preview__title').href;
+            const date = element.querySelector('.news-preview__date').textContent;
+            // const dateRaw = element.querySelector('.news-preview__title').textContent;
+            // const date = dateRaw.split('.').join('/');
 
-    elements.forEach( async element => {
-        const newsData = await page.evaluate(el => {
-            const href = el.querySelector('.news-preview__title').href;
-            const name = el.querySelector('.news-preview__title').textContent;
-            const dateRaw = el.querySelector('.news-area__date').textContent;
-            const date = dateRaw.split('.').join('/');
-            // const dateObj = parse(dateRaw, 'dd.MM.yyyy', new Date());
-            // const date = format(dateObj, DATE_MASK);
-            return { href, name, date };
-        }, element);
+           return {
 
-        listOfNews.push({
-            ...newsData
-        })
-    });
+                href,
+                name,
+                date,
+           };
+        });
+    }, { selectorName });
+
+    const listOfNews = listOfNewsRaw.map(news => ({
+        ...news, 
+        date: getPreparedDate(news.date),
+    }));
+
     await browser.close();
 
     return {
@@ -48,5 +61,4 @@ async function getParsedDataFromRankings()  {
     };
 }
 
-module.exports = { getParsedDataFromRatings };
-
+module.exports = { getParsedDataFromRankings };
