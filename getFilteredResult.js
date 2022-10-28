@@ -20,9 +20,9 @@ const KEY_WORDS = [
 //   продукт мсб открытие втб
   
   
-const TEST_KEY_WORDS = ['ес', 'nft', 'baza', 'киев', 'рэц']
+const TEST_KEY_WORDS = ['ес', 'nft', 'baza', 'киев', 'рэц', 'нетмонет', 'мошенн']
   
-const KEY_WORDS_FLAT = KEY_WORDS.reduce((acc, item) => {
+const KEY_WORDS_FLAT = TEST_KEY_WORDS.reduce((acc, item) => {
     if (Array.isArray(item)) {
         return [...acc, ...item];
     }
