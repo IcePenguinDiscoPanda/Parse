@@ -55,6 +55,8 @@ async function getParsedDataFromAlfa() {
 
     await browser.close();
 
+    console.log('Альфа', listOfNews.length);
+
     return {
         siteName: "Альфабанк.ру",
         siteHref: "https://www.alfabank.ru/",

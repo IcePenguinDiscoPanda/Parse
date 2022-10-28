@@ -54,6 +54,8 @@ async function getParsedDataFromRankings() {
 
     await browser.close();
 
+    console.log('Рейтингс', listOfNews.length);
+
     return {
         siteName: "Рейтингс.ру",
         siteHref: "https://www.ratings.ru/",

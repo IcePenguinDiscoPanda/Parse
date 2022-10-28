@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
 const subDays = require('date-fns/subDays');
 const format = require('date-fns/format');
+const { delay } = require('./helpers/delay.js');
 
 async function getParsedDataFromBanki()  {
     const previousDay = subDays(new Date(), 1);
@@ -20,7 +21,11 @@ async function getParsedDataFromBanki()  {
     const selectorName = '.NewsItemstyled__StyledItemTitle-sc-jjc7yr-7';
     await page.waitForSelector(selectorName);
 
-    await page.screenshot({path: 'example.png', fullPage: true});
+    await page.screenshot({path: 'example3.png', fullPage: true});
+
+    // await delay(10000);
+    
+    await page.screenshot({path: 'example4.png', fullPage: true});
 
     const listOfNews = await page.evaluate(({ selectorName, formattedPreviousDay }) => {
         const elements = Array.from(document.querySelectorAll(selectorName));
@@ -35,6 +40,8 @@ async function getParsedDataFromBanki()  {
     console.log(listOfNews);
 
     await browser.close();
+
+    console.log('Банки.ру', listOfNews.length);
 
     return {
         siteName: "Банки.ру",
