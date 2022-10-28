@@ -17,6 +17,19 @@ function convertAndSaveResult (newsArray = []) {
                         }),
                     ],
                 }),
+                // new Paragraph({
+                //     children: [
+                //         new ExternalHyperlink({
+                //             children: [
+                //                 new TextRun({
+                //                     text: "This is an external link!",
+                //                     style: "Hyperlink",
+                //                 }),
+                //             ],
+                //             link: news.href,
+                //         }),
+                //     ],
+                // }),
                 new Paragraph({
                     text: news.href,
                 }),
