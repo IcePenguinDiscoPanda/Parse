@@ -30,6 +30,8 @@ async function getParsedDataFromLenta() {
 
     await browser.close();
 
+    console.log('Лента', listOfNews.length);
+
     return {
         siteName: "Лента.ру",
         siteHref: "https://www.lenta.ru/",

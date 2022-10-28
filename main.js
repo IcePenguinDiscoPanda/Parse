@@ -3,6 +3,7 @@ const parsedDataHelperBanki = require('./getParsedDataFromBanki.js');
 const parsedDataHelperPSB = require('./getParsedDataFromPSB.js');
 const parsedDataHelperRankings = require('./getParsedDataFromRankings.js');
 const parsedDataHelperAlfa = require('./getParsedDataFromAlfa.js');
+const parsedDataHelperVtb = require('./getParsedDataFromVtb.js');
 
 const filteredResultHelper = require('./getFilteredResult.js');
 const convertAndSaveResultHelper = require('./convertAndSaveResult.js');
@@ -12,6 +13,7 @@ const { getParsedDataFromBanki } = parsedDataHelperBanki;
 const { getParsedDataFromPSB } = parsedDataHelperPSB;
 const { getParsedDataFromRankings } = parsedDataHelperRankings;
 const { getParsedDataFromAlfa } = parsedDataHelperAlfa;
+const { getParsedDataFromVtb } = parsedDataHelperVtb;
 
 const { getFilteredResult } = filteredResultHelper;
 const { convertAndSaveResult } = convertAndSaveResultHelper;
@@ -22,8 +24,9 @@ const { convertAndSaveResult } = convertAndSaveResultHelper;
     const parseResultPSB = await getParsedDataFromPSB();
     const parseResultRankings = await getParsedDataFromRankings();
     const parseResultAlfa = await getParsedDataFromAlfa();
+    const parseResultVtb = await getParsedDataFromVtb();
 
-    const arrayOfResults = [parseResultLentaRu, parseResultBankiRu, parseResultPSB, parseResultRankings, parseResultAlfa];
+    const arrayOfResults = [parseResultLentaRu, parseResultBankiRu, parseResultPSB, parseResultRankings, parseResultAlfa, parseResultVtb];
     const filteredArrayOfResults = getFilteredResult(arrayOfResults);
 
     const flatNewsArray = filteredArrayOfResults.reduce((acc, site) => ([...acc, ...site.listOfNews]), []);

@@ -37,6 +37,8 @@ async function getParsedDataFromPSB() {
 
     await browser.close();
 
+    console.log('ПСБ', listOfNews.length);
+
     return {
         siteName: "Псбанк.ру",
         siteHref: "https://www.psbank.ru/",
