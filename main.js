@@ -6,6 +6,7 @@ const { getParsedDataFromAlfa } = require('./getParsedDataFromAlfa.js');
 const { getParsedDataFromVtb } = require('./getParsedDataFromVtb.js');
 const { getParsedDataFromRia }  = require('./getParsedDataFromRia.js');
 const { getParsedDataFromRBC }  = require('./getParsedDataFromRBC.js');
+const { getParsedDataFromRaExpert }  = require('./getParsedDataFromRaExpert.js');
 
 const { getFilteredResult } = require('./getFilteredResult.js');
 const { convertAndSaveResult } = require('./convertAndSaveResult.js');
@@ -19,16 +20,17 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultVtb = await getParsedDataFromVtb();
     const parseResultRia = await getParsedDataFromRia();
     const parseResultRBC = await getParsedDataFromRBC();
+    const parseResultRaExpert = await getParsedDataFromRaExpert();
 
     const arrayOfResults = [parseResultLentaRu, parseResultBankiRu, parseResultPSB,
-        parseResultRankings, parseResultAlfa, parseResultVtb, parseResultRia, parseResultRBC];
+        parseResultRankings, parseResultAlfa, parseResultVtb, parseResultRia, parseResultRBC, parseResultRaExpert];
     const filteredArrayOfResults = getFilteredResult(arrayOfResults);
 
     const flatNewsArray = filteredArrayOfResults.reduce((acc, site) => ([...acc, ...site.listOfNews]), []);
     convertAndSaveResult(flatNewsArray);
 })();
 
-// https://www.rbc.ru/business/?utm_source=topline
+
 // https://www.raexpert.ru/
 // www.sberbank.ru не открывается без впн
 // https://www.open.ru/ не открывается без впн
