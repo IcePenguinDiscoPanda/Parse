@@ -14,7 +14,7 @@ const KEY_WORDS = [
   ];
   
 const TEST_KEY_WORDS = ['ес', 'nft', 'baza', 'заморож', 'design', 'nyt', 'магатэ',
- 'инновац', 'вэд', 'Танкерный', 'дефолт', 'Сбер', 'esg', 'зелено'];
+ 'инновац', 'вэд', 'Танкерный', 'дефолт', 'Сбер', 'esg', 'зелено', 'флагшт'];
   
 const KEY_WORDS_FLAT = TEST_KEY_WORDS.reduce((acc, item) => {
     if (Array.isArray(item)) {
