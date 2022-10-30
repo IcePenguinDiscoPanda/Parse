@@ -10,22 +10,16 @@ async function getParsedDataFromBanki()  {
     const month = format(previousDay, "M");
     const day = format(previousDay, "d");
     const browser = await puppeteer.launch();
+
     const page = await browser.newPage();
 
-    await page.setViewport({ width: 1366, height: 768});
-
-    const siteHref = `https://www.banki.ru/news/lenta/main/?filterType=all&d=${day}&m=${month}&y=${year}`; 
+    const siteHref = `https://www.banki.ru/news/lenta/?filterType=all&d=${day}&m=${month}&y=${year}`; 
 
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
     const selectorName = '.NewsItemstyled__StyledItemTitle-sc-jjc7yr-7';
+
     await page.waitForSelector(selectorName);
-
-    await page.screenshot({path: 'example3.png', fullPage: true});
-
-    // await delay(10000);
-    
-    await page.screenshot({path: 'example4.png', fullPage: true});
 
     const listOfNews = await page.evaluate(({ selectorName, formattedPreviousDay }) => {
         const elements = Array.from(document.querySelectorAll(selectorName));
