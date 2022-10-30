@@ -1,22 +1,13 @@
-const parsedDataHelperLenta = require('./getParsedDataFromLenta.js');
-const parsedDataHelperBanki = require('./getParsedDataFromBanki.js');
-const parsedDataHelperPSB = require('./getParsedDataFromPSB.js');
-const parsedDataHelperRankings = require('./getParsedDataFromRankings.js');
-const parsedDataHelperAlfa = require('./getParsedDataFromAlfa.js');
-const parsedDataHelperVtb = require('./getParsedDataFromVtb.js');
+const { getParsedDataFromLenta } = require('./getParsedDataFromLenta.js');
+const { getParsedDataFromBanki } = require('./getParsedDataFromBanki.js');
+const { getParsedDataFromPSB } = require('./getParsedDataFromPSB.js');
+const { getParsedDataFromRankings } = require('./getParsedDataFromRankings.js');
+const { getParsedDataFromAlfa } = require('./getParsedDataFromAlfa.js');
+const { getParsedDataFromVtb } = require('./getParsedDataFromVtb.js');
+const { getParsedDataFromRia }  = require('./getParsedDataFromRia.js');
 
-const filteredResultHelper = require('./getFilteredResult.js');
-const convertAndSaveResultHelper = require('./convertAndSaveResult.js');
-
-const { getParsedDataFromLenta } = parsedDataHelperLenta;
-const { getParsedDataFromBanki } = parsedDataHelperBanki;
-const { getParsedDataFromPSB } = parsedDataHelperPSB;
-const { getParsedDataFromRankings } = parsedDataHelperRankings;
-const { getParsedDataFromAlfa } = parsedDataHelperAlfa;
-const { getParsedDataFromVtb } = parsedDataHelperVtb;
-
-const { getFilteredResult } = filteredResultHelper;
-const { convertAndSaveResult } = convertAndSaveResultHelper;
+const { getFilteredResult } = require('./getFilteredResult.js');
+const { convertAndSaveResult } = require('./convertAndSaveResult.js');
 
 (async () => {
     const parseResultLentaRu = await getParsedDataFromLenta();
@@ -25,10 +16,22 @@ const { convertAndSaveResult } = convertAndSaveResultHelper;
     const parseResultRankings = await getParsedDataFromRankings();
     const parseResultAlfa = await getParsedDataFromAlfa();
     const parseResultVtb = await getParsedDataFromVtb();
+    const parseResultRia = await getParsedDataFromRia();
 
-    const arrayOfResults = [parseResultLentaRu, parseResultBankiRu, parseResultPSB, parseResultRankings, parseResultAlfa, parseResultVtb];
+    const arrayOfResults = [parseResultLentaRu, parseResultBankiRu, parseResultPSB,
+        parseResultRankings, parseResultAlfa, parseResultVtb, parseResultRia];
     const filteredArrayOfResults = getFilteredResult(arrayOfResults);
 
     const flatNewsArray = filteredArrayOfResults.reduce((acc, site) => ([...acc, ...site.listOfNews]), []);
     convertAndSaveResult(flatNewsArray);
 })();
+
+
+// https://ria.ru/economy/
+// https://www.rbc.ru/business/?utm_source=topline
+// https://www.raexpert.ru/
+// www.sberbank.ru не открывается без впн
+// https://www.open.ru/ не открывается без впн
+// https://sovcombank.ru/
+// https://www.centrinvest.ru/about/press-releases
+// https://kk.bank/o-banke/press-service/novosti-banka/

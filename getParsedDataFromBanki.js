@@ -37,7 +37,7 @@ async function getParsedDataFromBanki()  {
         }));
     }, { selectorName, formattedPreviousDay });
 
-    console.log(listOfNews);
+    // console.log(listOfNews);
 
     await browser.close();
 
