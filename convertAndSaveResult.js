@@ -1,12 +1,13 @@
 const format = require('date-fns/format');
 const fs = require("fs");
 const docx = require("docx");
-const { Document, Packer, Paragraph, TextRun} = docx;
+const { Document, Packer, Paragraph, TextRun, SectionType, ExternalHyperlink } = docx;
 
 function convertAndSaveResult (newsArray = []) {
     const doc = new Document({
         sections: newsArray.map(news => ({
-            properties: {},
+            properties: {
+                type: SectionType.CONTINUOUS,},
             children: [
                 new Paragraph({
                     children: [
@@ -18,10 +19,24 @@ function convertAndSaveResult (newsArray = []) {
                     ],
                 }),
                 new Paragraph({
-                    text: news.href,
+                    children: [
+                        new ExternalHyperlink({
+                            children: [
+                                new TextRun({
+                                    text: news.href,
+                                    style: "Hyperlink",
+                                }),
+                            ],
+                            link: news.href,
+                        }),
+                    ]
+                    
                 }),
                 new Paragraph({
                     text: news.date,
+                }),
+                new Paragraph({
+                    text: ' ',
                 })
             ],
         })),
