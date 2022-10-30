@@ -13,7 +13,8 @@ const KEY_WORDS = [
     ['продукт мсб','продукта мсб','продуктом мсб','продукты мсб','продуктов мсб','продуктами мсб']
   ];
   
-const TEST_KEY_WORDS = ['ес', 'nft', 'baza', 'заморож', 'design', 'nyt', 'магатэ', 'инновац', 'вэд', 'Танкерный', 'дефолт', 'Сбер', 'esg'];
+const TEST_KEY_WORDS = ['ес', 'nft', 'baza', 'заморож', 'design', 'nyt', 'магатэ',
+ 'инновац', 'вэд', 'Танкерный', 'дефолт', 'Сбер', 'esg', 'зелено'];
   
 const KEY_WORDS_FLAT = TEST_KEY_WORDS.reduce((acc, item) => {
     if (Array.isArray(item)) {
