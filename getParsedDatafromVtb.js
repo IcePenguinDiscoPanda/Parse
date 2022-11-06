@@ -1,10 +1,11 @@
 const puppeteer = require('puppeteer');
-const subDays = require('date-fns/subDays');
 const format = require('date-fns/format');
 const _ = require('lodash');
 const parse = require('date-fns/parse');
 const locale = require('date-fns/locale');
 const { delay } = require('./helpers/delay.js');
+const { necessaryDay } = require('./helpers/necessaryDay.js');
+
 
 const DATE_MASK = 'dd/MM/yyyy';
 
@@ -16,8 +17,6 @@ const getVtbPageData = async (page, selectorName) => {
             const name = element.querySelector('.card-newsstyles__Title-news__sc-q05ogs-4').textContent;
             const href = element.href;
             const date = element.querySelector('.vGOOj').textContent;
-            // const dateRaw = element.querySelector('.news-preview__title').textContent;
-            // const date = dateRaw.split('.').join('/');
 
            return {
 
@@ -37,7 +36,7 @@ const getPreparedDate = date => {
 };
 
 async function getParsedDataFromVtb() {
-    const previousDay = subDays(new Date(), 1);
+    const previousDay = necessaryDay;
     const formattedPreviousDay = format(previousDay, DATE_MASK);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -53,8 +52,6 @@ async function getParsedDataFromVtb() {
     const listOfNewsRawFirstPage = await getVtbPageData(page, selectorName);
 
     await page.click('.paginationstyles__Step-foundation-kit__sc-1e576hk-4.jvNIKG');
-
-    // await page.waitForTimeout(5000)
      
     await delay(5000);
 

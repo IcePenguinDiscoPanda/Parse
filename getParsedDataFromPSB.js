@@ -1,12 +1,11 @@
 const puppeteer = require("puppeteer");
-const subDays = require('date-fns/subDays');
 const format = require('date-fns/format');
-// const parse = require('date-fns/parse');
+const { necessaryDay } = require('./helpers/necessaryDay.js');
 
 const DATE_MASK = 'dd/MM/yyyy';
 
 async function getParsedDataFromPSB() {
-    const previousDay = subDays(new Date(), 1);
+    const previousDay = necessaryDay;
     const formattedPreviousDay = format(previousDay, DATE_MASK);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

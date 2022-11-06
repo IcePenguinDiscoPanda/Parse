@@ -1,10 +1,10 @@
 const puppeteer = require("puppeteer");
-const subDays = require('date-fns/subDays');
 const format = require('date-fns/format');
 const { delay } = require('./helpers/delay.js');
+const { necessaryDay } = require('./helpers/necessaryDay.js');
 
 async function getParsedDataFromBanki()  {
-    const previousDay = subDays(new Date(), 1);
+    const previousDay = necessaryDay;
     const formattedPreviousDay = format(previousDay, "dd/MM/yyyy");
     const year = format(previousDay, "yyyy");
     const month = format(previousDay, "M");

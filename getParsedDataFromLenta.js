@@ -1,13 +1,13 @@
 const puppeteer = require("puppeteer");
-const subDays = require('date-fns/subDays');
 const format = require('date-fns/format');
+const { necessaryDay } = require('./helpers/necessaryDay.js');
 
 async function getParsedDataFromLenta() {
-    const previousDay = subDays(new Date(), 1);
+    const previousDay = necessaryDay;
     const formattedPreviousDay = format(previousDay, "dd/MM/yyyy");
     const year = format(previousDay, "yyyy");
     const month = format(previousDay, "M");
-    const day = format(previousDay, "d");
+    const day = format(previousDay, "dd");
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 

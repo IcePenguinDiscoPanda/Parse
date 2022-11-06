@@ -1,11 +1,11 @@
 const puppeteer = require('puppeteer');
-const subDays = require('date-fns/subDays');
 const format = require('date-fns/format');
 const _ = require('lodash');
 const parse = require('date-fns/parse');
 const locale = require('date-fns/locale');
 const { delay } = require('./helpers/delay.js');
 const isMatch = require('date-fns/isMatch');
+const { necessaryDay } = require('./helpers/necessaryDay.js');
 
 const DATE_MASK = 'dd/MM/yyyy';
 
@@ -38,7 +38,7 @@ const getPreparedDate = date => {
     if (isMatch(date, localDateMask, { locale: locale.ru })) {
         parsedDate = parse(date, localDateMask, new Date(), { locale: locale.ru });
     } else if (date.toLowerCase().indexOf('вчера') !== -1) {
-        parsedDate = subDays(new Date(), 1);
+        parsedDate = necessaryDay;
     }
 
     const formattedDate = format(parsedDate, DATE_MASK);
@@ -49,7 +49,7 @@ const getPreparedDate = date => {
 };
 
 async function getParsedDataFromRia() {
-    const previousDay = subDays(new Date(), 1);
+    const previousDay = necessaryDay;
     const formattedPreviousDay = format(previousDay, DATE_MASK);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -66,6 +66,10 @@ async function getParsedDataFromRia() {
 
     // await page.waitForTimeout(5000)
      
+    await delay(3000);
+
+    await page.click('.list-more');
+
     await delay(3000);
 
     await page.click('.list-more');

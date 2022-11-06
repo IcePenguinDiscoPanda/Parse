@@ -1,11 +1,11 @@
 const puppeteer = require('puppeteer');
-const subDays = require('date-fns/subDays');
 const format = require('date-fns/format');
 const _ = require('lodash');
 const parse = require('date-fns/parse');
 const locale = require('date-fns/locale');
 const { delay } = require('./helpers/delay.js');
 const isMatch = require('date-fns/isMatch');
+const { necessaryDay } = require('./helpers/necessaryDay.js');
 
 const DATE_MASK = 'dd/MM/yyyy';
 
@@ -45,7 +45,7 @@ const getPreparedDate = date => {
 
 async function getParsedDataFromRbcPage(pageName) {
     const siteHref = `https://www.rbc.ru/${pageName}/?utm_source=topline`;
-    const previousDay = subDays(new Date(), 1);
+    const previousDay = necessaryDay;
     const formattedPreviousDay = format(previousDay, DATE_MASK);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
