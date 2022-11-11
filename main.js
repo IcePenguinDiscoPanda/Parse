@@ -11,6 +11,7 @@ const { getParsedDataFromSber }  = require('./getParsedDataFromSber.js');
 const { getParsedDataFromSovcom }  = require('./getParsedDataFromSovcom.js');
 const { getParsedDataFromCenterInvest }  = require('./getParsedDataFromCenterInvest.js');
 const { getParsedDataFromKubanKredit }  = require('./getParsedDataFromKubanKredit.js');
+const { getParsedDataFromGazProm }  = require('./getParsedDataFromGazProm.js');
 
 const { getFilteredResult } = require('./getFilteredResult.js');
 const { convertAndSaveResult } = require('./convertAndSaveResult.js');
@@ -29,6 +30,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultSovcom = await getParsedDataFromSovcom();
     const parseResultCenterInvest = await getParsedDataFromCenterInvest();
     const parseResultKubanKredit = await getParsedDataFromKubanKredit();
+    const parseResultGazProm = await getParsedDataFromGazProm();
 
     const arrayOfResults = [
         parseResultLentaRu,
@@ -43,7 +45,8 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         parseResultSber,
         parseResultSovcom,
         parseResultCenterInvest,
-        parseResultKubanKredit
+        parseResultKubanKredit,
+        parseResultGazProm
     ];
     
     const filteredArrayOfResults = getFilteredResult(arrayOfResults);
@@ -51,7 +54,3 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const flatNewsArray = filteredArrayOfResults.reduce((acc, site) => ([...acc, ...site.listOfNews]), []);
     convertAndSaveResult(flatNewsArray);
 })();
-
-
-// https://www.open.ru/ не открывается без впн
-// https://kk.bank/o-banke/press-service/novosti-banka/

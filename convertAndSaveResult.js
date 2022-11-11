@@ -43,7 +43,7 @@ function convertAndSaveResult (newsArray = []) {
         })),
     });
 
-    const date = format(subDays(new Date(), 1), "dd-MM-yyyy");
+    const date = format(subDays(new Date(), 4), "dd-MM-yyyy");
     const dir = './reports';
 
     Packer.toBuffer(doc).then((buffer) => {
@@ -51,7 +51,7 @@ function convertAndSaveResult (newsArray = []) {
             fs.mkdirSync(dir);
         }
 
-        fs.writeFileSync(`${dir}/Дайджест новостей МСБ за ${date}.docx`, buffer);
+        fs.writeFileSync(`${dir}/Дайджест новостей Марины за ${date}.docx`, buffer);
         console.log("done");
     });
 }
