@@ -13,6 +13,7 @@ const { getParsedDataFromCenterInvest }  = require('./getParsedDataFromCenterInv
 const { getParsedDataFromKubanKredit }  = require('./getParsedDataFromKubanKredit.js');
 const { getParsedDataFromGazProm }  = require('./getParsedDataFromGazProm.js');
 const { getParsedDataFromSMPbank }  = require('./getParsedDataFromSMPbank.js');
+const { getParsedDataFromMetallInvest }  = require('./getParsedDataFromMetallInvest.js');
 // const { getParsedDataFromAkbars }  = require('./getParsedDataFromAkbars.js');
 
 
@@ -35,6 +36,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultKubanKredit = await getParsedDataFromKubanKredit();
     const parseResultGazProm = await getParsedDataFromGazProm();
     const parseResultSMPbank = await getParsedDataFromSMPbank();
+    const parseResultMetallInvest = await getParsedDataFromMetallInvest();
     // const parseResultAkbars = await getParsedDataFromAkbars();
 
     const arrayOfResults = [
@@ -53,6 +55,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         parseResultKubanKredit,
         parseResultGazProm,
         parseResultSMPbank,
+        parseResultMetallInvest,
         // parseResultAkbars
     ];
     
