@@ -2,6 +2,7 @@ const format = require('date-fns/format');
 const fs = require("fs");
 const docx = require("docx");
 const { Document, Packer, Paragraph, TextRun, SectionType, ExternalHyperlink } = docx;
+const subDays = require('date-fns/subDays');
 
 function convertAndSaveResult (newsArray = []) {
     const doc = new Document({
@@ -42,7 +43,7 @@ function convertAndSaveResult (newsArray = []) {
         })),
     });
 
-    const date = format(new Date(), "dd-MM-yyyy");
+    const date = format(subDays(new Date(), 1), "dd-MM-yyyy");
     const dir = './reports';
 
     Packer.toBuffer(doc).then((buffer) => {
@@ -50,7 +51,7 @@ function convertAndSaveResult (newsArray = []) {
             fs.mkdirSync(dir);
         }
 
-        fs.writeFileSync(`${dir}/Отчет за ${date}.docx`, buffer);
+        fs.writeFileSync(`${dir}/Дайджест новостей МСБ за ${date}.docx`, buffer);
         console.log("done");
     });
 }

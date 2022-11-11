@@ -21,6 +21,8 @@ async function getParsedDataFromBanki()  {
 
     await page.waitForSelector(selectorName);
 
+    await delay(3000);
+
     const listOfNews = await page.evaluate(({ selectorName, formattedPreviousDay }) => {
         const elements = Array.from(document.querySelectorAll(selectorName));
 
