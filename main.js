@@ -12,7 +12,9 @@ const { getParsedDataFromSovcom }  = require('./getParsedDataFromSovcom.js');
 const { getParsedDataFromCenterInvest }  = require('./getParsedDataFromCenterInvest.js');
 const { getParsedDataFromKubanKredit }  = require('./getParsedDataFromKubanKredit.js');
 const { getParsedDataFromGazProm }  = require('./getParsedDataFromGazProm.js');
+const { getParsedDataFromSMPbank }  = require('./getParsedDataFromSMPbank.js');
 // const { getParsedDataFromAkbars }  = require('./getParsedDataFromAkbars.js');
+
 
 const { getFilteredResult } = require('./getFilteredResult.js');
 const { convertAndSaveResult } = require('./convertAndSaveResult.js');
@@ -32,6 +34,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultCenterInvest = await getParsedDataFromCenterInvest();
     const parseResultKubanKredit = await getParsedDataFromKubanKredit();
     const parseResultGazProm = await getParsedDataFromGazProm();
+    const parseResultSMPbank = await getParsedDataFromSMPbank();
     // const parseResultAkbars = await getParsedDataFromAkbars();
 
     const arrayOfResults = [
@@ -49,6 +52,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         parseResultCenterInvest,
         parseResultKubanKredit,
         parseResultGazProm,
+        parseResultSMPbank,
         // parseResultAkbars
     ];
     
