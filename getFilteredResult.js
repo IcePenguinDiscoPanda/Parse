@@ -14,7 +14,7 @@ const MSB_KEY_WORDS = [
   ];
   
 const TEST_KEY_WORDS = ['ес', 'nft', 'baza', 'заморож', 'design', 'nyt', 'магатэ',
- 'инновац', 'вэд', 'Танкерный', 'дефолт', 'Сбер', 'esg', 'зелено', 'флагшт', 'деревьев'];
+ 'инновац', 'вэд', 'Танкерный', 'дефолт', 'Сбер', 'esg', 'зелено', 'флагшт', 'деревьев', 'способы', 'повысило'];
 
  const MARINA_KEY_WORDS = [
     ['комплаенс'],
@@ -26,7 +26,7 @@ const TEST_KEY_WORDS = ['ес', 'nft', 'baza', 'заморож', 'design', 'nyt'
     ['каналы обслуж','каналов обслуж','каналам обслуж','каналами обслуж','каналах обслуж'],
  ];
   
-const KEY_WORDS_FLAT = TEST_KEY_WORDS.reduce((acc, item) => {
+const KEY_WORDS_FLAT = MSB_KEY_WORDS.reduce((acc, item) => {
     if (Array.isArray(item)) {
         return [...acc, ...item];
     }

@@ -62,7 +62,6 @@ async function getParsedDataFromUralSib() {
     await browser.close();
 
     console.log('Уралсиб', listOfNews.length);
-    console.log(listOfNews);
 
     return {
         siteName: "Уралсиб",
@@ -70,7 +69,5 @@ async function getParsedDataFromUralSib() {
         listOfNews: listOfNews.filter(news => news.date === formattedPreviousDay),
     };
 }
-
-getParsedDataFromUralSib();
 
 module.exports = { getParsedDataFromUralSib };

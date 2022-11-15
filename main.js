@@ -1,4 +1,4 @@
-const { getParsedDataFromLenta } = require('./getParsedDataFromLenta.js');
+const { getParsedDataFromLentaNew } = require('./getParsedDataFromLentaNew.js');
 const { getParsedDataFromBanki } = require('./getParsedDataFromBanki.js');
 const { getParsedDataFromPSB } = require('./getParsedDataFromPSB.js');
 const { getParsedDataFromRankings } = require('./getParsedDataFromRankings.js');
@@ -23,7 +23,7 @@ const { getFilteredResult } = require('./getFilteredResult.js');
 const { convertAndSaveResult } = require('./convertAndSaveResult.js');
 
 (async () => {
-    const parseResultLentaRu = await getParsedDataFromLenta();
+    const parseResultLentaRu = await getParsedDataFromLentaNew();
     const parseResultBankiRu = await getParsedDataFromBanki();
     const parseResultPSB = await getParsedDataFromPSB();
     const parseResultRankings = await getParsedDataFromRankings();
