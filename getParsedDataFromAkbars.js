@@ -61,6 +61,7 @@ async function getParsedDataFromAkbars() {
     await browser.close();
 
     console.log('Акбарс', listOfNews.length);
+    // console.log(listOfNews);
 
     return {
         siteName: "Акбарс",
@@ -68,5 +69,7 @@ async function getParsedDataFromAkbars() {
         listOfNews: listOfNews.filter(news => news.date === formattedPreviousDay),
     };
 }
+
+// getParsedDataFromAkbars();
 
 module.exports = { getParsedDataFromAkbars };

@@ -51,6 +51,8 @@ async function getParsedDataFromSber() {
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
+    // await page.screenshot({path: 'exampleSber.png'})
+
     const selectorName = '.na-article';
     await page.waitForSelector(selectorName);
      
@@ -74,6 +76,7 @@ async function getParsedDataFromSber() {
     await browser.close();
 
     console.log('Сбер', listOfNews.length);
+    // console.log(listOfNews);
 
     return {
         siteName: "Сбербанк.ру",
@@ -81,5 +84,8 @@ async function getParsedDataFromSber() {
         listOfNews: listOfNews.filter(news => news.date === formattedPreviousDay),
     };
 }
+
+// getParsedDataFromSber();
+
 
 module.exports = { getParsedDataFromSber };

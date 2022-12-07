@@ -16,7 +16,7 @@ const { getParsedDataFromSMPbank }  = require('./getParsedDataFromSMPbank.js');
 const { getParsedDataFromMetallInvest }  = require('./getParsedDataFromMetallInvest.js');
 const { getParsedDataFromUralSib }  = require('./getParsedDataFromUralSib.js');
 const { getParsedDataFromAsiaPacific }  = require('./getParsedDataFromAsiaPacific.js');
-// const { getParsedDataFromAkbars }  = require('./getParsedDataFromAkbars.js');
+const { getParsedDataFromAkbars }  = require('./getParsedDataFromAkbars.js');
 
 
 const { getFilteredResult } = require('./getFilteredResult.js');
@@ -32,7 +32,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultRia = await getParsedDataFromRia();
     const parseResultRBC = await getParsedDataFromRBC();
     const parseResultRaExpert = await getParsedDataFromRaExpert();
-    const parseResultSber = await getParsedDataFromSber();
+    // const parseResultSber = await getParsedDataFromSber();
     const parseResultSovcom = await getParsedDataFromSovcom();
     const parseResultCenterInvest = await getParsedDataFromCenterInvest();
     const parseResultKubanKredit = await getParsedDataFromKubanKredit();
@@ -40,8 +40,8 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultSMPbank = await getParsedDataFromSMPbank();
     const parseResultMetallInvest = await getParsedDataFromMetallInvest();
     const parseResultUralSib = await getParsedDataFromUralSib();
-    const parseResultAsiaPacific = await getParsedDataFromAsiaPacific();
-    // const parseResultAkbars = await getParsedDataFromAkbars();
+    // const parseResultAsiaPacific = await getParsedDataFromAsiaPacific();
+    const parseResultAkbars = await getParsedDataFromAkbars();
 
     const arrayOfResults = [
         parseResultLentaRu,
@@ -53,7 +53,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         parseResultRia,
         parseResultRBC,
         parseResultRaExpert,
-        parseResultSber,
+        // parseResultSber,
         parseResultSovcom,
         parseResultCenterInvest,
         parseResultKubanKredit,
@@ -61,8 +61,8 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         parseResultSMPbank,
         parseResultMetallInvest,
         parseResultUralSib,
-        parseResultAsiaPacific
-        // parseResultAkbars
+        // parseResultAsiaPacific,
+        parseResultAkbars
     ];
     
     const filteredArrayOfResults = getFilteredResult(arrayOfResults);

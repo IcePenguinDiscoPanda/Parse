@@ -43,7 +43,7 @@ async function getParsedDataFromLentaNew() {
     const formattedPreviousDay = format(previousDay, "dd/MM/yyyy");
     const year = format(previousDay, "yyyy");
     const month = format(previousDay, "M");
-    const day = format(previousDay, "d");
+    const day = format(previousDay, "dd");
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
@@ -64,8 +64,9 @@ async function getParsedDataFromLentaNew() {
     do {
         hasMore = await page.evaluate(() => {
             const el = document.querySelector(".loadmore._disabled");
+            const elements = document.querySelectorAll(".loadmore._disabled");
             console.log(el);
-            if (el && el?.innerText && el?.innerText === 'Дальше') {
+            if ((el && el?.innerText && el?.innerText === 'Дальше') || elements.length > 1) {
                 return false;
               }
               
@@ -87,8 +88,7 @@ async function getParsedDataFromLentaNew() {
 
     await browser.close();
 
-    console.log('Лента', listOfNews.length);
-    // console.log(listOfNews)   
+    console.log('Лента', listOfNews.length); 
 
     return {
         siteName: "Лента",
@@ -96,6 +96,5 @@ async function getParsedDataFromLentaNew() {
         listOfNews: listOfNews.filter(news => news.date === formattedPreviousDay),
     };
 };
-getParsedDataFromLentaNew();
 
 module.exports = { getParsedDataFromLentaNew };

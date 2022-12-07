@@ -15,19 +15,20 @@ async function getParsedDataFromPSB() {
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
-    const selectorName = '.news-area__item';
+    const selectorName = '.news-inner-item';
     await page.waitForSelector(selectorName);
 
     const listOfNews = await page.evaluate(({ selectorName }) => {
         const elements = Array.from(document.querySelectorAll(selectorName));
 
         return elements.map(element => {
-            const name = element.querySelector('.news-area__title b').textContent;
-            const dateRaw = element.querySelector('.news-area__date').textContent;
+            const href = element.querySelector('.news-inner-item__link').href;
+            const name = element.querySelector('.news-inner-item__title').textContent;
+            const dateRaw = element.querySelector('.news-inner-item__date').textContent;
             const date = dateRaw.split('.').join('/');
 
            return {
-                href: element.href,
+                href,
                 name,
                 date,
            };
