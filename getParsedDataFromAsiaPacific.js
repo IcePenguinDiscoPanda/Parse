@@ -13,9 +13,9 @@ const getPageData = async (page, selectorName) => {
         const elements = Array.from(document.querySelectorAll(selectorName));
 
         return elements.map(element => {
-            const name = element.querySelector('.txt a').textContent;
-            const href = element.querySelector('.txt a').href;
-            const date = element.querySelector('.post_date').textContent;
+            const name = element.querySelector('.news-main__title').textContent;
+            const href = element.querySelector('.news-main__title').href;
+            const date = element.querySelector('.news-main__date').textContent;
 
            return {
                 href,
@@ -46,7 +46,7 @@ async function getParsedDataFromAsiaPacific() {
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
-    const selectorName = '.news_list .item';
+    const selectorName = '.news-main__item';
     await page.waitForSelector(selectorName);
 
     await delay(3000);

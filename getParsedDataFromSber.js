@@ -46,12 +46,12 @@ async function getParsedDataFromSber() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    const siteHref = `http://www.sberbank.ru/ru/press_center/all`; 
+    const siteHref = `http://www.sberbank.ru/ru/sberpress/all`; 
 
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
-    // await page.screenshot({path: 'exampleSber.png'})
+    await page.screenshot({path: 'exampleSber2.png'})
 
     const selectorName = '.na-article';
     await page.waitForSelector(selectorName);

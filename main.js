@@ -17,6 +17,7 @@ const { getParsedDataFromMetallInvest }  = require('./getParsedDataFromMetallInv
 const { getParsedDataFromUralSib }  = require('./getParsedDataFromUralSib.js');
 const { getParsedDataFromAsiaPacific }  = require('./getParsedDataFromAsiaPacific.js');
 const { getParsedDataFromAkbars }  = require('./getParsedDataFromAkbars.js');
+const { getParsedDataFromOpen }  = require('./getParsedDataFromOpen.js');
 
 
 const { getFilteredResult } = require('./getFilteredResult.js');
@@ -40,8 +41,9 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultSMPbank = await getParsedDataFromSMPbank();
     const parseResultMetallInvest = await getParsedDataFromMetallInvest();
     const parseResultUralSib = await getParsedDataFromUralSib();
-    // const parseResultAsiaPacific = await getParsedDataFromAsiaPacific();
+    const parseResultAsiaPacific = await getParsedDataFromAsiaPacific();
     const parseResultAkbars = await getParsedDataFromAkbars();
+    const parseResultOpen = await getParsedDataFromOpen();
 
     const arrayOfResults = [
         parseResultLentaRu,
@@ -61,8 +63,9 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         parseResultSMPbank,
         parseResultMetallInvest,
         parseResultUralSib,
-        // parseResultAsiaPacific,
-        parseResultAkbars
+        parseResultAsiaPacific,
+        parseResultAkbars,
+        parseResultOpen
     ];
     
     const filteredArrayOfResults = getFilteredResult(arrayOfResults);

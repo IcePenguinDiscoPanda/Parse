@@ -49,9 +49,11 @@ async function getParsedDataFromVtb() {
     const selectorName = '.card-newsstyles__LinkWrap-news__sc-q05ogs-5';
     await page.waitForSelector(selectorName);
 
+    await page.screenshot({path: 'exampleVtb.png'});
+
     const listOfNewsRawFirstPage = await getVtbPageData(page, selectorName);
 
-    await page.click('.paginationstyles__Step-foundation-kit__sc-1e576hk-4.jvNIKG');
+    await page.click('.paginationstyles__Navigation-foundation-kit__sc-1e576hk-5');
      
     await delay(5000);
 
@@ -67,6 +69,7 @@ async function getParsedDataFromVtb() {
     await browser.close();
 
     console.log('ВТБ', listOfNews.length);
+    // console.log(listOfNews);
 
     return {
         siteName: "Втб.ру",
@@ -74,5 +77,7 @@ async function getParsedDataFromVtb() {
         listOfNews: listOfNews.filter(news => news.date === formattedPreviousDay),
     };
 }
+
+// getParsedDataFromVtb();
 
 module.exports = { getParsedDataFromVtb };
