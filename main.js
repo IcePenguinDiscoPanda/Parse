@@ -18,6 +18,8 @@ const { getParsedDataFromUralSib }  = require('./getParsedDataFromUralSib.js');
 const { getParsedDataFromAsiaPacific }  = require('./getParsedDataFromAsiaPacific.js');
 const { getParsedDataFromAkbars }  = require('./getParsedDataFromAkbars.js');
 const { getParsedDataFromOpen }  = require('./getParsedDataFromOpen.js');
+const { getParsedDataFromDelo }  = require('./getParsedDataFromDelo.js');
+const { getParsedDataFromTinkoff }  = require('./getParsedDataFromTinkoff.js');
 
 
 const { getFilteredResult } = require('./getFilteredResult.js');
@@ -44,6 +46,8 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultAsiaPacific = await getParsedDataFromAsiaPacific();
     const parseResultAkbars = await getParsedDataFromAkbars();
     const parseResultOpen = await getParsedDataFromOpen();
+    const parseResultDelo = await getParsedDataFromDelo();
+    const parseResultTinkoff = await getParsedDataFromTinkoff();
 
     const arrayOfResults = [
         parseResultLentaRu,
@@ -65,7 +69,9 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         parseResultUralSib,
         parseResultAsiaPacific,
         parseResultAkbars,
-        parseResultOpen
+        parseResultOpen,
+        parseResultDelo,
+        parseResultTinkoff,
     ];
     
     const filteredArrayOfResults = getFilteredResult(arrayOfResults);
