@@ -55,7 +55,7 @@ async function getParsedDataFromTinkoff() {
     await browser.close();
 
     console.log('Тинёк', listOfNews.length);
-    console.log(listOfNews);
+    // console.log(listOfNews);
 
     return {
         siteName: "Тиньков",
@@ -64,6 +64,6 @@ async function getParsedDataFromTinkoff() {
     };
 }
 
-getParsedDataFromTinkoff();
+// getParsedDataFromTinkoff();
 
 module.exports = { getParsedDataFromTinkoff };
