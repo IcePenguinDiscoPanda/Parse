@@ -30,7 +30,7 @@ async function getParsedDataFromOpen() {
     await page.waitForSelector(selectorName);
 
 
-    await page.screenshot({path: 'exampleOpen.png'})
+    // await page.screenshot({path: 'exampleOpen.png'})
 
     const listOfNewsRaw = await page.evaluate(({ selectorName }) => {
         const elements = Array.from(document.querySelectorAll(selectorName));

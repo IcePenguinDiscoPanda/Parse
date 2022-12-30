@@ -48,10 +48,14 @@ async function getParsedDataFromSovcom() {
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
-    const selectorName = '.p-7.from-frostSky'
+    await page.screenshot({path: 'exampleSovcom3.png', fullPage: true});;
+
+    const selectorName = '.from-frostSky'
     await page.waitForSelector(selectorName);
      
     await delay(3000);
+
+    await page.screenshot({path: 'exampleSovcom2.png'});
 
     const listOfNewsRaw = await getPageData(page, selectorName);
 
@@ -63,6 +67,7 @@ async function getParsedDataFromSovcom() {
     await browser.close();
 
     console.log('Совком', listOfNews.length);
+    // console.log(listOfNews);
 
     return {
         siteName: "Совком.ру",
@@ -70,5 +75,7 @@ async function getParsedDataFromSovcom() {
         listOfNews: listOfNews.filter(news => news.date === formattedPreviousDay),
     };
 }
+
+// getParsedDataFromSovcom();
 
 module.exports = { getParsedDataFromSovcom };

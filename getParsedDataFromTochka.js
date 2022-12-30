@@ -47,13 +47,13 @@ async function getParsedDataFromTochka() {
 
     await delay(3000);
 
+    await page.screenshot({path: 'exampleTochka1.png', fullPage: true});
+
     const selectorName = '.news-item_container__D_Xbj';
 
     await page.waitForSelector(selectorName);
 
     await delay(3000);
-
-    await page.screenshot({path: 'exampleTochka4.png'});
 
     const listOfNewsRaw = await getPageData(page, selectorName);
 

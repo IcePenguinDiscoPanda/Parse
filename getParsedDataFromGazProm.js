@@ -13,14 +13,13 @@ const getPageData = async (page, selectorName) => {
         const elements = Array.from(document.querySelectorAll(selectorName));
 
         return elements.map(element => {
-            const name = element.querySelector('.block-announcements__text').textContent;
-            const href = element.querySelector('.block-announcements__a').href;
-            const date = element.querySelector('.block-announcements__date').textContent;
+            const name = element.querySelector('.press_news_list_item_root__content_title--7fdc1').textContent;
+            const href = element.href;
+            const date = element.querySelector('.press_news_list_item_root__content_date--7fdc1').textContent;
             // const dateRaw = element.querySelector('.news-preview__title').textContent;
             // const date = dateRaw.split('.').join('/');
 
            return {
-
                 href,
                 name,
                 date,
@@ -30,7 +29,7 @@ const getPageData = async (page, selectorName) => {
 }
 
 const getPreparedDate = date => {
-    const localDateMask = 'dd/MM';
+    const localDateMask = 'dd MMMM, yyyy';
 
     const parsedDate = parse(date, localDateMask, new Date(), { locale: locale.ru });
 
@@ -49,7 +48,7 @@ async function getParsedDataFromGazProm() {
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
-    const selectorName = '.block-announcements__item';
+    const selectorName = '.press_news_list_item_root--7fdc1';
     await page.waitForSelector(selectorName);
 
     await delay(3000);
@@ -58,13 +57,14 @@ async function getParsedDataFromGazProm() {
 
     const listOfNews = listOfNewsRaw.map(news => ({
         ...news, 
-        name: _.trim(news.name).replace('\n', ' '),
+        // name: _.trim(news.name).replace('\n', ' '),
         date: getPreparedDate(news.date),
     }));
 
     await browser.close();
 
     console.log('Газпром', listOfNews.length);  
+    // console.log(listOfNews);
 
     return {
         siteName: "Газпром",
@@ -72,5 +72,7 @@ async function getParsedDataFromGazProm() {
         listOfNews: listOfNews.filter(news => news.date === formattedPreviousDay),
     };
 }
+
+// getParsedDataFromGazProm();
 
 module.exports = { getParsedDataFromGazProm };

@@ -50,12 +50,18 @@ async function getParsedDataFromRbcPage(pageName) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
+    await page.setDefaultNavigationTimeout(0); 
+
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
-    const selectorName = '.js-load-container .item';
+    // await page.screenshot({path: 'exampleRBC.png'});
+
+    const selectorName = '.js-category-item';
     await page.waitForSelector(selectorName);
 
     await delay(3000);
+
+    // await page.screenshot({path: 'exampleRBC2.png'});
 
     const listOfNewsRaw = await getPageData(page, selectorName);
 
@@ -68,6 +74,7 @@ async function getParsedDataFromRbcPage(pageName) {
     await browser.close();
 
     console.log(`РБК ${pageName}`, listOfNews.length);
+    // console.log(listOfNews);
 
     return listOfNews.filter(news => news.date === formattedPreviousDay);
 }
@@ -84,5 +91,7 @@ async function getParsedDataFromRBC() {
         listOfNews: [...economics, ...business, ...finances],
     };
 };
+
+// getParsedDataFromRBC();
 
 module.exports = { getParsedDataFromRBC };

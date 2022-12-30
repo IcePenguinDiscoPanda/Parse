@@ -49,7 +49,7 @@ async function getParsedDataFromVtb() {
     const selectorName = '.card-newsstyles__LinkWrap-news__sc-q05ogs-5';
     await page.waitForSelector(selectorName);
 
-    await page.screenshot({path: 'exampleVtb.png'});
+    // await page.screenshot({path: 'exampleVtb.png'});
 
     const listOfNewsRawFirstPage = await getVtbPageData(page, selectorName);
 
