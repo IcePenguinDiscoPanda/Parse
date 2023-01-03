@@ -42,7 +42,7 @@ async function getParsedDataFromLentaNew() {
     const previousDay = necessaryDay;
     const formattedPreviousDay = format(previousDay, "dd/MM/yyyy");
     const year = format(previousDay, "yyyy");
-    const month = format(previousDay, "M");
+    const month = format(previousDay, "MM");
     const day = format(previousDay, "dd");
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

@@ -48,7 +48,7 @@ async function getParsedDataFromSovcom() {
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
-    await page.screenshot({path: 'exampleSovcom3.png', fullPage: true});;
+    await page.screenshot({path: 'exampleSovcom3.png', fullPage: true});
 
     const selectorName = '.from-frostSky'
     await page.waitForSelector(selectorName);

@@ -44,7 +44,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultMetallInvest = await getParsedDataFromMetallInvest();
     const parseResultUralSib = await getParsedDataFromUralSib();
     const parseResultAsiaPacific = await getParsedDataFromAsiaPacific();
-    const parseResultAkbars = await getParsedDataFromAkbars();
+    // const parseResultAkbars = await getParsedDataFromAkbars();
     const parseResultOpen = await getParsedDataFromOpen();
     const parseResultDelo = await getParsedDataFromDelo();
     const parseResultTinkoff = await getParsedDataFromTinkoff();
@@ -68,7 +68,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         parseResultMetallInvest,
         parseResultUralSib,
         parseResultAsiaPacific,
-        parseResultAkbars,
+        // parseResultAkbars,
         parseResultOpen,
         parseResultDelo,
         parseResultTinkoff,

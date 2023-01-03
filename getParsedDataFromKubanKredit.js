@@ -49,10 +49,16 @@ async function getParsedDataFromKubanKredit() {
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
+    await delay(3000);
+
+    // await page.screenshot({path: 'exampleKK1.png', fullPage: true});
+
     const selectorName = '.news-preview-list-item';
     await page.waitForSelector(selectorName);
 
     await delay(3000);
+
+    // await page.screenshot({path: 'exampleKK2.png', fullPage: true});
 
     const listOfNewsRawFirstPage = await getPageData(page, selectorName);
 
@@ -71,7 +77,8 @@ async function getParsedDataFromKubanKredit() {
 
     await browser.close();
 
-    console.log('Кубань кредит', listOfNews.length);   
+    console.log('Кубань кредит', listOfNews.length);
+    // console.log(listOfNews); 
 
     return {
         siteName: "КубаньКредит",
@@ -79,5 +86,7 @@ async function getParsedDataFromKubanKredit() {
         listOfNews: listOfNews.filter(news => news.date === formattedPreviousDay),
     };
 }
+
+// getParsedDataFromKubanKredit();
 
 module.exports = { getParsedDataFromKubanKredit };

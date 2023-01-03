@@ -28,6 +28,8 @@ async function getParsedDataFromRankings() {
     const selectorName = '.news-preview__item';
     await page.waitForSelector(selectorName);
 
+    // await page.screenshot({path: 'exampleRankings.png', fullPage: true});
+
     const listOfNewsRaw = await page.evaluate(({ selectorName }) => {
         const elements = Array.from(document.querySelectorAll(selectorName));
 
@@ -55,6 +57,7 @@ async function getParsedDataFromRankings() {
     await browser.close();
 
     console.log('Рейтингс', listOfNews.length);
+    // console.log(listOfNews);
 
     return {
         siteName: "Рейтингс.ру",
@@ -62,5 +65,7 @@ async function getParsedDataFromRankings() {
         listOfNews: listOfNews.filter(news => news.date === formattedPreviousDay),
     };
 }
+
+// getParsedDataFromRankings();
 
 module.exports = { getParsedDataFromRankings };
