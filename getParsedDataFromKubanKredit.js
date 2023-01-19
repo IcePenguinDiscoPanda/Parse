@@ -51,14 +51,14 @@ async function getParsedDataFromKubanKredit() {
 
     await delay(3000);
 
-    // await page.screenshot({path: 'exampleKK1.png', fullPage: true});
+    await page.screenshot({path: 'exampleKK1.png', fullPage: true});
 
     const selectorName = '.news-preview-list-item';
     await page.waitForSelector(selectorName);
 
     await delay(3000);
 
-    // await page.screenshot({path: 'exampleKK2.png', fullPage: true});
+    await page.screenshot({path: 'exampleKK2.png', fullPage: true});
 
     const listOfNewsRawFirstPage = await getPageData(page, selectorName);
 

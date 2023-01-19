@@ -45,6 +45,7 @@ async function getParsedDataFromSovcom() {
 
     const siteHref = `https://sovcombank.ru/articles`; 
 
+    // await page.setDefaultNavigationTimeout(0); 
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 

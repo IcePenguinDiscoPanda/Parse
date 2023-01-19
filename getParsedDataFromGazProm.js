@@ -13,9 +13,9 @@ const getPageData = async (page, selectorName) => {
         const elements = Array.from(document.querySelectorAll(selectorName));
 
         return elements.map(element => {
-            const name = element.querySelector('.press_news_list_item_root__content_title--7fdc1').textContent;
+            const name = element.querySelector('.press_center_news_list_item_root__content_title--ac767').textContent;
             const href = element.href;
-            const date = element.querySelector('.press_news_list_item_root__content_date--7fdc1').textContent;
+            const date = element.querySelector('.press_center_news_list_item_root__content_date--ac767').textContent;
             // const dateRaw = element.querySelector('.news-preview__title').textContent;
             // const date = dateRaw.split('.').join('/');
 
@@ -48,7 +48,7 @@ async function getParsedDataFromGazProm() {
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
-    const selectorName = '.press_news_list_item_root--7fdc1';
+    const selectorName = '.press_center_news_list_item_listing--ac767';
     await page.waitForSelector(selectorName);
 
     await delay(3000);

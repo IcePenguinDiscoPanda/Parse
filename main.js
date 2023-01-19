@@ -36,7 +36,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultRBC = await getParsedDataFromRBC();
     const parseResultRaExpert = await getParsedDataFromRaExpert();
     // const parseResultSber = await getParsedDataFromSber();
-    const parseResultSovcom = await getParsedDataFromSovcom();
+    // const parseResultSovcom = await getParsedDataFromSovcom();
     const parseResultCenterInvest = await getParsedDataFromCenterInvest();
     const parseResultKubanKredit = await getParsedDataFromKubanKredit();
     const parseResultGazProm = await getParsedDataFromGazProm();
@@ -44,7 +44,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     const parseResultMetallInvest = await getParsedDataFromMetallInvest();
     const parseResultUralSib = await getParsedDataFromUralSib();
     const parseResultAsiaPacific = await getParsedDataFromAsiaPacific();
-    // const parseResultAkbars = await getParsedDataFromAkbars();
+    const parseResultAkbars = await getParsedDataFromAkbars();
     const parseResultOpen = await getParsedDataFromOpen();
     const parseResultDelo = await getParsedDataFromDelo();
     const parseResultTinkoff = await getParsedDataFromTinkoff();
@@ -60,7 +60,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         parseResultRBC,
         parseResultRaExpert,
         // parseResultSber,
-        parseResultSovcom,
+        // parseResultSovcom,
         parseResultCenterInvest,
         parseResultKubanKredit,
         parseResultGazProm,
@@ -68,7 +68,7 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         parseResultMetallInvest,
         parseResultUralSib,
         parseResultAsiaPacific,
-        // parseResultAkbars,
+        parseResultAkbars,
         parseResultOpen,
         parseResultDelo,
         parseResultTinkoff,
