@@ -23,7 +23,8 @@ async function getParsedDataFromOpen() {
 
     const siteHref = `https://www.open.ru/about/press`; 
 
-    
+    await page.setDefaultNavigationTimeout(0); 
+
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
     const selectorName = '.press-list__item';
@@ -59,6 +60,7 @@ async function getParsedDataFromOpen() {
     await browser.close();
 
     console.log('Открытие', listOfNews.length);
+    // console.log(listOfNews);
 
     return {
         siteName: "Открытие",
@@ -66,5 +68,7 @@ async function getParsedDataFromOpen() {
         listOfNews: listOfNews.filter(news => news.date === formattedPreviousDay),
     };
 }
+
+// getParsedDataFromOpen();
 
 module.exports = { getParsedDataFromOpen };

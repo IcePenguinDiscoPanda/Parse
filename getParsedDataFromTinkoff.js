@@ -25,16 +25,16 @@ async function getParsedDataFromTinkoff() {
     
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
-    const selectorName = '.a1rscr';
+    const selectorName = '.aHKpD4';
     await page.waitForSelector(selectorName);
 
     const listOfNewsRaw = await page.evaluate(({ selectorName }) => {
         const elements = Array.from(document.querySelectorAll(selectorName));
 
         return elements.map(element => {
-            const name = element.querySelector('.e1rscr span').textContent;
+            const name = element.querySelector('.eHKpD4 span').textContent;
             const href = element.querySelector('a').href;
-            const date = element.querySelector('.h1rscr').textContent;
+            const date = element.querySelector('.hHKpD4').textContent;
             // const dateRaw = element.querySelector('.news-preview__title').textContent;
             // const date = dateRaw.split('.').join('/');
 

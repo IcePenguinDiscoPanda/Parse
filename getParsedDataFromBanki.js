@@ -15,6 +15,8 @@ async function getParsedDataFromBanki()  {
 
     const siteHref = `https://www.banki.ru/news/lenta/?filterType=all&d=${day}&m=${month}&y=${year}`; 
 
+    await page.setDefaultNavigationTimeout(0); 
+
     await page.goto(siteHref);//, {waitUntil: 'load', timeout: 0}
 
     const selectorName = '.NewsItemstyled__StyledItemTitle-sc-jjc7yr-7';

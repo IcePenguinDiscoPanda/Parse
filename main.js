@@ -38,12 +38,12 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
     // const parseResultSber = await getParsedDataFromSber();
     // const parseResultSovcom = await getParsedDataFromSovcom();
     const parseResultCenterInvest = await getParsedDataFromCenterInvest();
-    const parseResultKubanKredit = await getParsedDataFromKubanKredit();
+    // const parseResultKubanKredit = await getParsedDataFromKubanKredit();
     const parseResultGazProm = await getParsedDataFromGazProm();
     const parseResultSMPbank = await getParsedDataFromSMPbank();
     const parseResultMetallInvest = await getParsedDataFromMetallInvest();
     const parseResultUralSib = await getParsedDataFromUralSib();
-    const parseResultAsiaPacific = await getParsedDataFromAsiaPacific();
+    // const parseResultAsiaPacific = await getParsedDataFromAsiaPacific();
     const parseResultAkbars = await getParsedDataFromAkbars();
     const parseResultOpen = await getParsedDataFromOpen();
     const parseResultDelo = await getParsedDataFromDelo();
@@ -62,12 +62,12 @@ const { convertAndSaveResult } = require('./convertAndSaveResult.js');
         // parseResultSber,
         // parseResultSovcom,
         parseResultCenterInvest,
-        parseResultKubanKredit,
+        // parseResultKubanKredit,
         parseResultGazProm,
         parseResultSMPbank,
         parseResultMetallInvest,
         parseResultUralSib,
-        parseResultAsiaPacific,
+        // parseResultAsiaPacific,
         parseResultAkbars,
         parseResultOpen,
         parseResultDelo,
